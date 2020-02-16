@@ -11,9 +11,21 @@ class MoviesController < ApplicationController
   end
 
   def index
+    # @all_ratings = ['G','PG','PG-13','R']
+    @all_ratings = Movie.all_ratings()
+    puts
+    puts params[:ratings]
+    puts
     @movies = Movie.all
+    if not params[:ratings].nil?
+      session[:ratings] = params[:ratings]
+      @ratings = params[:ratings].keys
+      # puts @ratings  #{"G"=>"1", "PG"=>"1", "PG-13"=>"1", "R"=>"1"}.keys
+      @movies = @movies.with_ratings(@ratings)
+    end
+    
     if params[:sort]
-      @movies = Movie.order(params[:sort])
+      @movies = @movies.order(params[:sort]).all
     end
   end
 
