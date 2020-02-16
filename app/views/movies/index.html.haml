@@ -12,9 +12,9 @@
 %table#movies.table.table-striped.col-md-12
   %thead
     %tr
-      %th{params[:sort]=="title" ?{:class => "hilite"}:{:class => ""}}= link_to "Movie Title", movies_path(:sort => "title"), :id => "title_header"
+      %th{params[:sort]=="title" ?{:class => "hilite"}:{:class => ""}}= link_to "Movie Title", movies_path(:sort => "title", :ratings => params[:ratings]), :id => "title_header"
       %th Rating
-      %th{params[:sort]=="release_date" ?{:class => "hilite"}:{:class => ""}}= link_to "Release Date", movies_path(:sort => "release_date"), :id => "release_date_header"
+      %th{params[:sort]=="release_date" ?{:class => "hilite"}:{:class => ""}}= link_to "Release Date", movies_path(:sort => "release_date", :ratings => params[:ratings]), :id => "release_date_header"
       %th More Info
   %tbody
     - @movies.each do |movie|
