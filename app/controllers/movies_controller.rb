@@ -13,9 +13,9 @@ class MoviesController < ApplicationController
   def index
     # @all_ratings = ['G','PG','PG-13','R']
     @all_ratings = Movie.all_ratings()
-    puts params[:sort]
-    puts params[:ratings]
-    puts
+    # puts params[:sort]
+    # puts params[:ratings]
+    # puts
     
     @movies = Movie.all
     if not params[:ratings].nil?
@@ -26,9 +26,9 @@ class MoviesController < ApplicationController
 
     end
     
-    puts '-------------------------'
-    puts session[:sort]
-    puts '-------------------------'
+    # puts '-------------------------'
+    # puts session[:sort]
+    # puts '-------------------------'
     if (not params[:sort].nil?) and  params[:sort]!='none'
       session[:sort] = params[:sort]
       @movies = @movies.order(params[:sort]).all
@@ -36,9 +36,9 @@ class MoviesController < ApplicationController
     if session[:sort].nil?
       session[:sort] = 'none'
     end
-    puts '-------------------------'
-    puts session[:sort]
-    puts '-------------------------'
+    # puts '-------------------------'
+    # puts session[:sort]
+    # puts '-------------------------'
     if params[:sort].nil?
       flash.keep
       redirect_to movies_path(sort: session[:sort], ratings: session[:ratings])
